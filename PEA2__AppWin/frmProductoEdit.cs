@@ -37,7 +37,7 @@ namespace PEA2__AppWin
         }
         private void cargarDatos()
         {
-            // Listar los tipo de documentos
+            // Listar categoria
             cbocategoria.DataSource = CategoriaBL.Listar();
             cbocategoria.DisplayMember = "Nombre";
             cbocategoria.ValueMember = "IdCategoria";
@@ -48,16 +48,21 @@ namespace PEA2__AppWin
         {
             txtnombre.Text = producto.Nombre;
             txtmarca.Text = producto.Marca;
-            Double txtprecio = producto.Precio;
+            double.Parse(txtprecio.Text = producto.Precio.ToString());
+            int.Parse(txtstock.Text = producto.Stock.ToString());
+            txtobservacion.Text = producto.Observacion;
             cbocategoria.SelectedValue = producto.IdCategoria;
         }
 
         private void asignarObjeto()
         {
-            txtnombre.Text = producto.Nombre;
-            txtmarca.Text = producto.Marca;
-            Double txtprecio = producto.Precio;
-            cbocategoria.SelectedValue = producto.IdCategoria;
+            producto.Nombre = txtnombre.Text;
+            producto.Marca = txtmarca.Text;
+            producto.Precio = double.Parse(txtprecio.Text.ToString());
+            producto.Stock = int.Parse(txtstock.Text.ToString());
+            producto.Observacion = txtobservacion.Text;
+            producto.IdCategoria = int.Parse(cbocategoria.SelectedValue.ToString());
+
         }
 
     }

@@ -46,6 +46,7 @@
             // 
             this.dgvListado.AllowUserToAddRows = false;
             this.dgvListado.AllowUserToDeleteRows = false;
+            this.dgvListado.BackgroundColor = System.Drawing.Color.Navy;
             this.dgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
@@ -55,7 +56,8 @@
             this.dgvListado.Location = new System.Drawing.Point(12, 42);
             this.dgvListado.Name = "dgvListado";
             this.dgvListado.ReadOnly = true;
-            this.dgvListado.Size = new System.Drawing.Size(598, 233);
+            this.dgvListado.RowHeadersVisible = false;
+            this.dgvListado.Size = new System.Drawing.Size(622, 233);
             this.dgvListado.TabIndex = 0;
             // 
             // colID
@@ -63,13 +65,14 @@
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
+            this.colID.Visible = false;
             // 
             // colNombre
             // 
             this.colNombre.HeaderText = "NOMBRE";
             this.colNombre.Name = "colNombre";
             this.colNombre.ReadOnly = true;
-            this.colNombre.Width = 160;
+            this.colNombre.Width = 280;
             // 
             // colMarca
             // 
@@ -83,16 +86,18 @@
             this.colPrecio.HeaderText = "PRECIO";
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.ReadOnly = true;
+            this.colPrecio.Width = 120;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.SteelBlue;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbagregar,
             this.tsbmodificar,
             this.tsbeliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(623, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(646, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -127,11 +132,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 287);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(646, 287);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvListado);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "frmProducto";
-            this.Text = "Form1";
+            this.Text = "LISTA DE PRODUCTOS";
             this.Load += new System.EventHandler(this.IniciarFormulario);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListado)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -144,14 +151,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvListado;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbmodificar;
+        private System.Windows.Forms.ToolStripButton tsbeliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbagregar;
-        private System.Windows.Forms.ToolStripButton tsbmodificar;
-        private System.Windows.Forms.ToolStripButton tsbeliminar;
     }
 }
 

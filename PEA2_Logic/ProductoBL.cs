@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PEA2_Logic
 {
-    public class ProductoBL
+    public static class ProductoBL
     {
         public static List<Producto> Listar()
         {
@@ -18,10 +18,10 @@ namespace PEA2_Logic
             return productoData.BuscarPorId(id);
         }
 
-        public static bool Insertar(Producto Producto)
+        public static bool Insertar(Producto producto)
         {
-            var ProductoData = new ProductoData();
-            return ProductoData.Insertar(Producto);
+            var productoData = new ProductoData();
+            return productoData.Insertar(producto);
         }
 
         public static bool Actualizar(Producto Producto)

@@ -36,20 +36,20 @@ namespace PEA2__AppWin
 
         private void tsbagregar_Click(object sender, EventArgs e)
         {
-            var nuevoCliente = new Producto();
-            var frm = new frmProductoEdit(nuevoCliente);
+            var nuevoProducto = new Producto();
+            var frm = new frmProductoEdit(nuevoProducto);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                var exito = ProductoBL.Insertar(nuevoCliente);
+                var exito = ProductoBL.Insertar(nuevoProducto);
                 if (exito)
                 {
-                    MessageBox.Show("El cliente ha sido registrado", "Financiera",
+                    MessageBox.Show("El producto ha sido registrado", "Parcial",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDatos();
                 }
                 else
                 {
-                    MessageBox.Show("No se ha podido registrar al cliente", "Financiera",
+                    MessageBox.Show("No se ha podido registrar el producto", "Parcial",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -68,14 +68,14 @@ namespace PEA2__AppWin
                     var exito = ProductoBL.Actualizar(productoEditar);
                     if (exito)
                     {
-                        MessageBox.Show("El cliente ha sido actualizado", "Financiera",
+                        MessageBox.Show("El producto ha sido actualizado", "Parcial",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cargarDatos();
                     }
                     else
                     {
                         MessageBox.Show("No se ha podido completar la operación de actualización",
-                            "Financiera", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "Parcial", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -88,21 +88,21 @@ namespace PEA2__AppWin
                 int filaActual = dgvListado.CurrentRow.Index;
                 var idProducto = int.Parse(dgvListado.Rows[filaActual].Cells[0].Value.ToString());
                 var nombreProducto = dgvListado.Rows[filaActual].Cells[1].Value.ToString();
-                var rpta = MessageBox.Show("¿Realmente desea eliminar al Producto " + nombreProducto + " ?",
+                var rpta = MessageBox.Show("¿Realmente desea eliminar el Producto " + nombreProducto + "?",
                     "Parcial", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (rpta == DialogResult.Yes)
                 {
                     var exito = ProductoBL.Eliminar(idProducto);
                     if (exito)
                     {
-                        MessageBox.Show("El cliente ha sido eliminado.", "Financiera",
+                        MessageBox.Show("El producto ha sido eliminado.", "Parcial",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cargarDatos();
                     }
                     else
                     {
-                        MessageBox.Show("No se ha podido completar la eliminación del cliente",
-                            "Financiera", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se ha podido completar la eliminación del producto",
+                            "Parcial", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

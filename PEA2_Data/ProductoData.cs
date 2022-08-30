@@ -30,7 +30,7 @@ namespace PEA2_Data
                                 Producto.Precio = double.Parse(lector[3].ToString());
                                 Producto.Stock = int.Parse(lector[4].ToString());
                                 Producto.Observacion = lector[5].ToString();
-
+                                Producto.IdCategoria = int.Parse(lector[7].ToString());
 
                                 listado.Add(Producto);
                             }
@@ -61,7 +61,7 @@ namespace PEA2_Data
                             Producto.Precio = double.Parse(lector[3].ToString());
                             Producto.Stock = int.Parse(lector[4].ToString());
                             Producto.Observacion = lector[5].ToString();
-                            Producto.IdCategoria = int.Parse(lector[6].ToString());
+                            Producto.IdCategoria = int.Parse(lector[7].ToString());
                         }
                     }
                 }
@@ -69,21 +69,21 @@ namespace PEA2_Data
             return Producto;
         }
 
-        public bool Insertar(Producto Producto)
+        public bool Insertar(Producto producto)
         {
             int filasInsertadas = 0;
             using (var conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
-                var sql = "INSERT INTO Producto (Nombre,Marca,Precio,Stock,Observacion,IdCategoria) VALUES (@Nombre,@Marca,@Precio,@Stock,@Observacion,@IdCategoria";
+                var sql = "INSERT INTO Producto (Nombre,Marca,Precio,Stock,Observacion,IdCategoria) VALUES (@Nombre,@Marca,@Precio,@Stock,@Observacion,@IdCategoria)";
                 using (var comando = new SqlCommand(sql, conexion))
                 {
-                    comando.Parameters.AddWithValue("@Nombre", Producto.Nombre);
-                    comando.Parameters.AddWithValue("@Marca", Producto.Marca);
-                    comando.Parameters.AddWithValue("@Precio", Producto.Precio);
-                    comando.Parameters.AddWithValue("@Stock", Producto.Stock);
-                    comando.Parameters.AddWithValue("@Observacion", Producto.Observacion);
-                    comando.Parameters.AddWithValue("@IdCategoria", Producto.IdCategoria);
+                    comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
+                    comando.Parameters.AddWithValue("@Marca", producto.Marca);
+                    comando.Parameters.AddWithValue("@Precio", producto.Precio);
+                    comando.Parameters.AddWithValue("@Stock", producto.Stock);
+                    comando.Parameters.AddWithValue("@Observacion", producto.Observacion);
+                    comando.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
                     filasInsertadas = comando.ExecuteNonQuery();
                 }
             }
@@ -97,7 +97,7 @@ namespace PEA2_Data
             {
                 conexion.Open();
                 var sql = "UPDATE Producto SET Nombre = @Nombre, Marca = @Marca, " +
-                    "Precio = @Precio, Stock = @Stock,Observacion=@Observacion,Idcategoria=@IdCategoria WHERE IdCategoria=@ID";
+                    "Precio = @Precio, Stock = @Stock,Observacion=@Observacion,Idcategoria=@IdCategoria WHERE IdProducto=@ID";
                 using (var comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.AddWithValue("@Nombre", Producto.Nombre);
